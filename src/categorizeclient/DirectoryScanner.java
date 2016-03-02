@@ -56,18 +56,4 @@ public class DirectoryScanner {
 	}
     }
     
-    public static void main(String[] args) {
-	try {
-	    DirectoryScanner ds = new DirectoryScanner(new File("C:\\music"));
-	    Map<File, ID3Tag> tagMap = ds.getTagsFromFiles();
-	    for (File file : tagMap.keySet()) {
-		System.out.println(file.getName() + "\n" + tagMap.get(file));
-	    }
-	} catch (FileNotFoundException e) {
-	    e.printStackTrace();
-	} catch (NotDirectoryException e) {
-	    e.printStackTrace();
-	}
-	
-    }
 }
