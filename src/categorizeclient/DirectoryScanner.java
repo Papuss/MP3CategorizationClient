@@ -10,7 +10,7 @@ import exceptions.NotDirectoryException;
 
 public class DirectoryScanner {
 
-    Map<File, ID3Tag> tagsFromFiles;
+    private Map<File, ID3Tag> tagsFromFiles;
 
     public DirectoryScanner(File directory) throws FileNotFoundException, NotDirectoryException {
 	
