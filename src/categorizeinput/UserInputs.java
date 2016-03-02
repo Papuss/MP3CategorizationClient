@@ -20,7 +20,7 @@ public class UserInputs {
 	boolean validInput = true;
 	Scanner input = new Scanner((System.in) );
 	String[] answers = new String[]{"1", "2", "3", "4", "5"};
-	System.out.println(printCategories());
+	System.out.print(printCategories());
 	do {
 	    choosenNumber = input.next();
 	    if (Arrays.asList(answers).contains(choosenNumber)) {
