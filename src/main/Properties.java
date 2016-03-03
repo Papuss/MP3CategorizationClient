@@ -1,4 +1,4 @@
-package main.id3tag;
+package main;
 
 public enum Properties {
     FILENAME,

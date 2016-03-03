@@ -1,6 +1,6 @@
 package main.categorizeclient;
 
-import main.id3tag.ID3Tag;
+import main.ID3Tag;
 import main.exceptions.NotDirectoryException;
 
 import java.io.File;

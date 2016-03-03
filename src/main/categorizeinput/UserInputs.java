@@ -1,6 +1,6 @@
 package main.categorizeinput;
 
-import main.id3tag.Properties;
+import main.Properties;
 
 import java.io.BufferedReader;
 import java.io.File;

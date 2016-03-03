@@ -1,7 +1,7 @@
 package main.categorizeclient;
 
 import main.exceptions.NotDirectoryException;
-import main.id3tag.Properties;
+import main.Properties;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,23 +13,29 @@ import java.util.List;
 
 public class CategorizeClient {
 
-    private static Map<String, List<File>> resultMap = null;
-    static Socket socket = null;
-    static ObjectInputStream objectInputStream = null;
-    static ObjectOutputStream  objectOutputStream= null;
+    private static Map<String, List<File>> resultMap;
+    static Socket socket;
+    static ObjectInputStream objectInputStream;
+    static ObjectOutputStream objectOutputStream;
+
     public CategorizeClient(int port, File directory, Properties chosenTag) {
         try {
-            if (socket==null){
-                socket = new Socket("localhost", port);
+
+            if (!socket.isConnected()){
+                socket = new Socket("192.168.150.50", port);
                 objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
-            }/*exceptions*/
+            }
+
+
+
 
             DirectoryScanner musicDir = new DirectoryScanner(directory);
             objectOutputStream.writeObject(musicDir.getTagsFromFiles());
             objectOutputStream.writeObject(chosenTag);
 
             resultMap = (Map<String, List<File>>) objectInputStream.readObject();
+
 
 
             DirectoryCreateMP3Move.createFolders(resultMap.keySet(), directory);
@@ -41,25 +47,16 @@ public class CategorizeClient {
             e.printStackTrace();
         }
 
-        /*kilépő metódus kreál */
-    }
-    public void exit(String command){
-            try {
-                objectOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                objectInputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                socket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
     }
 
+    public void exit() {
+        try {
+            objectOutputStream.close();
+            objectInputStream.close();
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-}
+
+    }}
