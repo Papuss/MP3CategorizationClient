@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Map;
 
-import common.Properties;
+import common.Property;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class CategorizeClient {
     static ObjectInputStream objectInputStream;
     static ObjectOutputStream objectOutputStream;
 
-    public CategorizeClient(int port, File directory, Properties chosenTag) {
+    public CategorizeClient(int port, File directory, Property chosenTag) {
         try {
 
             if (!socket.isConnected()){
@@ -57,6 +57,5 @@ public class CategorizeClient {
             e.printStackTrace();
         }
 
-
-
-    }}
+    }
+}

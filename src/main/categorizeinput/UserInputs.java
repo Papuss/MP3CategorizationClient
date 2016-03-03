@@ -7,12 +7,12 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import common.Properties;
+import common.Property;
 
 public class UserInputs {
 
     static String choosenNumber;
-    static Properties choosenCategory;
+    static Property choosenCategory;
 
     private static String printCategories() {
         return "\n1. Title\n" + "2. Artist\n" + "3. Album\n" + "4. Year\n" + "5. Genre\n" +
@@ -37,7 +37,7 @@ public class UserInputs {
 	return choosenNumber; 
     }
 
-    public static Properties returnCategoryName() {
+    public static Property returnCategoryName() {
         choosenNumber = getChosenTagFromUser();
         switch (choosenNumber) {
             case "1": choosenCategory = Properties.TITLE; break;
