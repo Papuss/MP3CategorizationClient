@@ -5,34 +5,45 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.Map;
+import java.util.List;
 
 import categorizeinput.UserInputs;
 import exceptions.NotDirectoryException;
+import id3tag.Properties;
 
 public class CategorizeClient {
 
-    public CategorizeClient(int port, File directory, String chosenTag) {
+    public CategorizeClient(int port, File directory, Properties chosenTag) {
+	Map<String, List<File>> resultMap = null;
 	try {
-	    Socket socket = new Socket("localhost", port);
+	    Socket socket = new Socket("192.168.150.50", port);
 	    ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 	    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 	    
 	    DirectoryScanner musicDir = new DirectoryScanner(directory) ;
 	    objectOutputStream.writeObject(musicDir.getTagsFromFiles());
 	    objectOutputStream.writeObject(chosenTag);
-	     
+
+	    resultMap = (Map<String, List<File>>) objectInputStream.readObject();
 	    
 	    objectOutputStream.close();
 	    objectInputStream.close();
 	    socket.close();
 	} catch (IOException | NotDirectoryException e) {
 	    e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
 	}
     }
     
     public static void main(String[] args) {
 	File pathName = UserInputs.getFolderNameCheckIfExist();
-	String chosenTag = UserInputs.returnCategoryName();
+	Properties chosenTag = UserInputs.returnCategoryName();
 	new CategorizeClient(1003, pathName, chosenTag);
+	for (String string : CategorizeClient.resultMap.keySet()) {
+	    System.out.println(string);
+	    System.out.println(CategorizeClient.resultMap.get(string));
+	}
     }
 }

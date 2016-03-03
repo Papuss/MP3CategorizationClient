@@ -1,4 +1,4 @@
-package categorizeclient;
+package id3tag;
 
 import java.io.File;
 import java.io.RandomAccessFile;

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exceptions.NotDirectoryException;
+import id3tag.ID3Tag;
 
 public class DirectoryScanner {
 

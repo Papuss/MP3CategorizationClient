@@ -7,10 +7,12 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import id3tag.Properties;
+
 public class UserInputs {
 
     static String choosenNumber;
-    static String choosenCategory;
+    static Properties choosenCategory;
 
     private static String printCategories() {
         return "\n1. Title\n" + "2. Artist\n" + "3. Album\n" + "4. Year\n" + "5. Genre\n" +
@@ -35,14 +37,14 @@ public class UserInputs {
 	return choosenNumber; 
     }
 
-    public static String returnCategoryName() {
+    public static Properties returnCategoryName() {
         choosenNumber = getChosenTagFromUser();
         switch (choosenNumber) {
-            case "1": choosenCategory = "title"; break;
-            case "2": choosenCategory = "artist"; break;
-            case "3": choosenCategory = "album"; break;
-            case "4": choosenCategory = "year"; break;
-            case "5": choosenCategory = "genre"; break;
+            case "1": choosenCategory = Properties.TITLE; break;
+            case "2": choosenCategory = Properties.ARTIST; break;
+            case "3": choosenCategory = Properties.ALBUM; break;
+            case "4": choosenCategory = Properties.YEAR; break;
+            case "5": choosenCategory = Properties.GENRE; break;
             default: System.out.println("\nYou can only choose a number from 1 to 5!"); break; }
         return choosenCategory; }
 
