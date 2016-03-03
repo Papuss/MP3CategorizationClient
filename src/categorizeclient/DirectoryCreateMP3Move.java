@@ -1,4 +1,4 @@
-package main.categorizeclient;
+package categorizeclient;
 
 import java.io.File;
 import java.util.ArrayList;

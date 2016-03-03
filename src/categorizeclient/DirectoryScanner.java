@@ -1,6 +1,6 @@
-package main.categorizeclient;
+package categorizeclient;
 
-import main.exceptions.NotDirectoryException;
+import exceptions.NotDirectoryException;
 
 import java.io.File;
 import java.io.FileFilter;
