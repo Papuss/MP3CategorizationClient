@@ -1,4 +1,4 @@
-package id3tag;
+package main.id3tag;
 
 import java.io.File;
 import java.io.RandomAccessFile;
