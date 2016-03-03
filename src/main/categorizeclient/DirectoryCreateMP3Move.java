@@ -41,8 +41,8 @@ public class DirectoryCreateMP3Move {
         System.out.println("The program moved: " + counter + " files");
         if (!mp3sNotMoved.isEmpty()) {
             System.out.println("\nThese files have wrong or empty tag values, so they cannot be arranged: \n");
-            for (String List : mp3sNotMoved) {
-                System.out.println(List);
+            for (String list : mp3sNotMoved) {
+                System.out.println(list);
             }
         }
     }
