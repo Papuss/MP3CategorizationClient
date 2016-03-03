@@ -27,9 +27,6 @@ public class CategorizeClient {
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
             }
 
-
-
-
             DirectoryScanner musicDir = new DirectoryScanner(directory);
             objectOutputStream.writeObject(musicDir.getTagsFromFiles());
             objectOutputStream.writeObject(chosenTag);
