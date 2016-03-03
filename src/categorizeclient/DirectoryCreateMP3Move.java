@@ -1,7 +1,5 @@
 package categorizeclient;
 
-import id3tag.ID3Tag;
-
 import java.io.File;
 import java.util.*;
 
@@ -22,7 +20,7 @@ public class DirectoryCreateMP3Move {
         int counter = 0;
         List<String> mp3sNotMoved = new ArrayList<>();
         for (File file : mp3files){
-            File destination = new File(path + "\\" + (foldername) + "\\" + file.getName());
+            File destination = new File(path + "\\" + foldername + "\\" + file.getName());
             if (destination.exists()){
                 destination.delete();
             }
@@ -41,13 +39,5 @@ public class DirectoryCreateMP3Move {
             }
         }
     }
-
-
-
-
-
-
-
-
 
 }

@@ -13,9 +13,9 @@ import exceptions.NotDirectoryException;
 import id3tag.Properties;
 
 public class CategorizeClient {
+    private static Map<String, List<File>> resultMap = null;
 
     public CategorizeClient(int port, File directory, Properties chosenTag) {
-	Map<String, List<File>> resultMap = null;
 	try {
 	    Socket socket = new Socket("192.168.150.50", port);
 	    ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
@@ -26,6 +26,11 @@ public class CategorizeClient {
 	    objectOutputStream.writeObject(chosenTag);
 
 	    resultMap = (Map<String, List<File>>) objectInputStream.readObject();
+	    
+	    DirectoryCreateMP3Move.createFolders(resultMap.keySet(), directory);
+	    for (String string : resultMap.keySet()) {
+		DirectoryCreateMP3Move.moveFileIntoFolder(resultMap.get(string), directory, string);
+	    }
 	    
 	    objectOutputStream.close();
 	    objectInputStream.close();
@@ -41,9 +46,6 @@ public class CategorizeClient {
 	File pathName = UserInputs.getFolderNameCheckIfExist();
 	Properties chosenTag = UserInputs.returnCategoryName();
 	new CategorizeClient(1003, pathName, chosenTag);
-	for (String string : CategorizeClient.resultMap.keySet()) {
-	    System.out.println(string);
-	    System.out.println(CategorizeClient.resultMap.get(string));
-	}
+	
     }
 }
