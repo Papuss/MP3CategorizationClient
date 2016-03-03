@@ -1,6 +1,5 @@
 package main.categorizeclient;
 
-import main.categorizeinput.UserInputs;
 import main.exceptions.NotDirectoryException;
 import main.id3tag.Properties;
 
@@ -41,13 +40,26 @@ public class CategorizeClient {
         } catch (IOException | NotDirectoryException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         /*kilépő metódus kreál */
     }
-
-    public static void main(String[] args) {
-        File pathName = UserInputs.getFolderNameCheckIfExist();
-        Properties chosenTag = UserInputs.returnCategoryName();
-        new CategorizeClient(1003, pathName, chosenTag);
-
+    public void exit(String command){
+            try {
+                objectOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                objectInputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
+
+
 }
