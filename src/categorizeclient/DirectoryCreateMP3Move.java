@@ -1,33 +1,33 @@
 package categorizeclient;
 
-import id3tag.ID3Tag;
-
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class DirectoryCreateMP3Move {
 
     public static void createFolders(Set<String> tagList, File path) {
         for (String tagValue : tagList) {
-            if ( tagValue != null ) {
+            if (tagValue != null) {
                 File currentDir = new File(path + "//" + tagValue);
-                if ( !currentDir.exists() ) {
+                if (!currentDir.exists()) {
                     currentDir.mkdir();
                 }
             }
         }
     }
 
-    public static void moveFileIntoFolder(List<File> mp3files, File path,String foldername){
+    public static void moveFileIntoFolder(List<File> mp3files, File path, String foldername) {
         int counter = 0;
         List<String> mp3sNotMoved = new ArrayList<>();
-        for (File file : mp3files){
-            File destination = new File(path + "\\" + (foldername) + "\\" + file.getName());
-            if (destination.exists()){
+        for (File file : mp3files) {
+            File destination = new File(path + "\\" + foldername + "\\" + file.getName());
+            if (destination.exists()) {
                 destination.delete();
             }
-            if (file.renameTo(destination)){
-                counter +=1;
+            if (file.renameTo(destination)) {
+                counter += 1;
             } else {
                 mp3sNotMoved.add(file.getName());
             }
@@ -41,13 +41,6 @@ public class DirectoryCreateMP3Move {
             }
         }
     }
-
-
-
-
-
-
-
 
 
 }

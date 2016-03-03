@@ -13,30 +13,28 @@ import exceptions.NotDirectoryException;
 import id3tag.Properties;
 
 public class CategorizeClient {
+	static Map<String, List<File>> resultMap = null;
 
     public CategorizeClient(int port, File directory, Properties chosenTag) {
-	Map<String, List<File>> resultMap = null;
 	try {
 	    Socket socket = new Socket("192.168.150.50", port);
 	    ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
 	    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-	    
+
 	    DirectoryScanner musicDir = new DirectoryScanner(directory) ;
 	    objectOutputStream.writeObject(musicDir.getTagsFromFiles());
 	    objectOutputStream.writeObject(chosenTag);
 
 	    resultMap = (Map<String, List<File>>) objectInputStream.readObject();
-	    
+
 	    objectOutputStream.close();
 	    objectInputStream.close();
 	    socket.close();
-	} catch (IOException | NotDirectoryException e) {
-	    e.printStackTrace();
-	} catch (ClassNotFoundException e) {
+	} catch (IOException | NotDirectoryException | ClassNotFoundException e) {
 	    e.printStackTrace();
 	}
     }
-    
+
     public static void main(String[] args) {
 	File pathName = UserInputs.getFolderNameCheckIfExist();
 	Properties chosenTag = UserInputs.returnCategoryName();
