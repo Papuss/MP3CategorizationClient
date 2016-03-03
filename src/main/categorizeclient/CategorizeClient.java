@@ -1,7 +1,6 @@
 package main.categorizeclient;
 
 import main.exceptions.NotDirectoryException;
-import main.id3tag.Properties;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Map;
+
+import common.Properties;
+
 import java.util.List;
 
 public class CategorizeClient {

@@ -1,6 +1,5 @@
 package main.categorizeinput;
 
-import main.id3tag.Properties;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
+
+import common.Properties;
 
 public class UserInputs {
 

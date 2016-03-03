@@ -2,9 +2,10 @@ package main;
 
 import main.categorizeclient.CategorizeClient;
 import main.categorizeinput.UserInputs;
-import main.id3tag.Properties;
 
 import java.io.File;
+
+import common.Properties;
 
 public class Main {
 
