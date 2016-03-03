@@ -40,11 +40,11 @@ public class UserInputs {
     public static Property returnCategoryName() {
         choosenNumber = getChosenTagFromUser();
         switch (choosenNumber) {
-            case "1": choosenCategory = Properties.TITLE; break;
-            case "2": choosenCategory = Properties.ARTIST; break;
-            case "3": choosenCategory = Properties.ALBUM; break;
-            case "4": choosenCategory = Properties.YEAR; break;
-            case "5": choosenCategory = Properties.GENRE; break;
+            case "1": choosenCategory = Property.TITLE; break;
+            case "2": choosenCategory = Property.ARTIST; break;
+            case "3": choosenCategory = Property.ALBUM; break;
+            case "4": choosenCategory = Property.YEAR; break;
+            case "5": choosenCategory = Property.GENRE; break;
             default: System.out.println("\nYou can only choose a number from 1 to 5!"); break; }
         return choosenCategory; }
 
