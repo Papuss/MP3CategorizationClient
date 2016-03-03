@@ -17,6 +17,7 @@ public class CategorizeClient {
     static Socket socket = null;
     static ObjectInputStream objectInputStream = null;
     static ObjectOutputStream  objectOutputStream= null;
+    
     public CategorizeClient(int port, File directory, Properties chosenTag) {
         try {
             if (socket==null){
@@ -41,20 +42,12 @@ public class CategorizeClient {
             e.printStackTrace();
         }
 
-        /*kilépő metódus kreál */
     }
-    public void exit(String command){
+    
+    public void exit(){
             try {
                 objectOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
                 objectInputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
                 socket.close();
             } catch (IOException e) {
                 e.printStackTrace();

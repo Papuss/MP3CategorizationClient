@@ -6,7 +6,7 @@ import main.id3tag.Properties;
 
 import java.io.File;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         File pathName = UserInputs.getFolderNameCheckIfExist();
