@@ -10,19 +10,15 @@ import common.Property;
 
 public class CategorizeClient {
 
-    static Socket socket;
+    static Socket socket = null;
     static ObjectInputStream objectInputStream;
     static ObjectOutputStream objectOutputStream;
 
-    static {
+    public CategorizeClient(String host, int port, File directory, Property chosenTag) {
         try {
-            socket = new Socket("192.168.150.31", 1003);
+            if (socket == null) socket = new Socket(host, port);
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             objectInputStream = new ObjectInputStream(socket.getInputStream());
-        } catch (Exception e) {e.printStackTrace();} }
-
-    public CategorizeClient(int port, File directory, Property chosenTag) {
-        try {
             DirectoryScanner musicDir = new DirectoryScanner(directory);
             objectOutputStream.writeObject(musicDir.getTagsFromFiles());
             objectOutputStream.writeObject(chosenTag);

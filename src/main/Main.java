@@ -5,7 +5,6 @@ import common.Property;
 import categorizeclient.CategorizeClient;
 import categorizeclient.DirectoryCreateMP3Move;
 import categorizeinput.UserInputs;
-import ftvl.FTVL;
 
 public class Main {
 
@@ -18,7 +17,7 @@ public class Main {
         while (true){
             File pathName = UserInputs.getFolderNameCheckIfExist();
             Property chosenTag = UserInputs.returnCategoryName();
-            new CategorizeClient(1003, pathName, chosenTag);
+            new CategorizeClient("192.168.150.31", 1003, pathName, chosenTag);
             DirectoryCreateMP3Move.printResults();
         }
 
