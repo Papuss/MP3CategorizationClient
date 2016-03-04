@@ -45,6 +45,7 @@ public class DirectoryCreateMP3Move {
                 System.out.println(list);
             }
         }
+        counter = 0;
     }
 
 }
