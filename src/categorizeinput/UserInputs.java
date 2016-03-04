@@ -54,11 +54,14 @@ public class UserInputs {
 		return choosenCategory;	}
 
 	static public File getFolderNameCheckIfExist() throws Exception {
-		File dir;
+		File dir= null;
 		do {
-			System.out.print("Please enter the path to your mp3 folder (such as c:/music): ");
+			System.out.print("Please enter the path to your mp3 folder (such as c:/music) or (exit) to exit: ");
 			Scanner scanner = new Scanner(System.in);
 			String dirPath = scanner.nextLine();
+			if (dirPath.equals("exit")){
+				System.exit(1);
+			}
 			dir = new File(dirPath); }
 			while (!dir.exists());
 		return dir; }

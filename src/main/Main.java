@@ -5,16 +5,26 @@ import common.Property;
 import categorizeclient.CategorizeClient;
 import categorizeclient.DirectoryCreateMP3Move;
 import categorizeinput.UserInputs;
+import ftvl.FTVL;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        categorizeClient();
+
+    }
+
+    public static void categorizeClient() throws Exception {
         while (true){
             File pathName = UserInputs.getFolderNameCheckIfExist();
             Property chosenTag = UserInputs.returnCategoryName();
             new CategorizeClient(1003, pathName, chosenTag);
             DirectoryCreateMP3Move.printResults();
         }
+
+
     }
+
+
 }
 

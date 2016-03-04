@@ -39,4 +39,7 @@ public class CategorizeClient {
             objectInputStream.close();
             socket.close(); }
         catch (Exception e) {e.printStackTrace();} }
+
+
+
 }
