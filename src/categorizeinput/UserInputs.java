@@ -16,11 +16,11 @@ public class UserInputs {
 
 	public static String getChosenTagFromUser() {
 		boolean validInput = true;
-		Scanner input = new Scanner((System.in));
+		Scanner input = new Scanner(System.in);
 		String[] answers = new String[]{"1", "2", "3", "4", "5"};
 		System.out.print(printCategories());
 		do {
-			choosenNumber = input.next();
+			choosenNumber = input.nextLine();
 			if (Arrays.asList(answers).contains(choosenNumber)) {
 				validInput = false;
 			} else {
